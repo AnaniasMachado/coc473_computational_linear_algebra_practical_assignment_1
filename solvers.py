@@ -10,6 +10,8 @@ from algorithms import compute_determinant, compute_determinant_jea
 """ Actual Code """
 
 def linear_system_solver(A, B, method):
+    if (len(A) != len(A[0])):
+        raise Exception("Error: Given matrix is not a square matrix.")
     if method == 'LU':
         X = lu_solver(A, B)
         return X
@@ -26,6 +28,8 @@ def linear_system_solver(A, B, method):
         raise Exception("Error: Invalid method.")
 
 def eigenvector_eigenvalue_solver(M, method, determinant=False):
+    if (len(M) != len(M[0])):
+        raise Exception("Error: Given matrix is not a square matrix.")
     det = 0
     if method == 'Power Method':
         if determinant:

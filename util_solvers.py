@@ -14,6 +14,8 @@ from algorithms import compute_determinant, compute_determinant_jea
 """ Actual Code """
 
 def linear_system_solver_B_vector(LU, B, method):
+    if (len(LU) != len(B)):
+        raise Exception("Error: Given vector B cannot be obtained by a product of the form (LU)X = B for given matrix LU.")
     Y = forward(LU, B)
     X = backward(LU, Y)
     return X
@@ -22,6 +24,8 @@ def linear_system_solver_B_matrix(LU, B, method):
     n = len(B)
     X = []
     for i in range(n):
+        if (len(LU) != len(B[i])):
+            raise Exception("Error: Given vector B cannot be obtained by a product of the form (LU)X = B for given matrix LU.")
         if method == "LU":
             YS = forward_substitution_LU(LU, B[i])
             XS = backward_substitution(LU, YS)
