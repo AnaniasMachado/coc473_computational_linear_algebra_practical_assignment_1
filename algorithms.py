@@ -34,6 +34,8 @@ def lu_decomposition(M):
 def cholesky_decomposition(M):
     # This algorithm overwrites the original matrix M with the matrix L^T of Cholesky decomposition
     # Note that the lower diagonal elements from the original matrix are not overwritten
+    if not is_symmetric(M):
+        raise Exception("Error: Given matrix is not symmetric.")
     n = len(M)
     for k in range(0, n):
         if M[k][k] == 0:
