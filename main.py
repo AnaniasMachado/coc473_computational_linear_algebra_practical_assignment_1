@@ -27,28 +27,37 @@ if __name__ == "__main__":
     
     method = "LU"
     X = linear_system_solver(A, B, method)
-    print(X)
+    print("Computed matrix X with LU decomposition:")
+    print_matrix(X)
+    print("\n")
 
     A = read_matrix_file(matrix)
     B = make_matrix(vectors)
 
     method = "Cholesky"
     X = linear_system_solver(A, B, method)
-    print(X)
+    print("Computed matrix X with Cholesky decomposition:")
+    print_matrix(X)
+    print("\n")
 
     A = read_matrix_file(matrix)
     B = make_matrix(vectors)
     
     method = "Jacobi"
     X = linear_system_solver(A, B, method)
-    print(X)
+    print("Computed matrix X with Jacobi method:")
+    print_matrix(X)
+    print("\n")
 
     A = read_matrix_file(matrix)
     B = make_matrix(vectors)
     
     method = "Gauss-Seidel"
     X = linear_system_solver(A, B, method)
-    print(X)
+    print("Computed matrix X with Gauss-Seidel method:")
+    print_matrix(X)
+    print("\n")
+
 
     # Computing eigenvectors and eigenvalues
 
@@ -56,14 +65,30 @@ if __name__ == "__main__":
     
     method = "Power Method"
     eigenvectors, eigenvalues, determinant = eigenvector_eigenvalue_solver(M, method, determinant=True)
+    print("Computed dominant eigenvector with Power Method:")
     print(eigenvectors)
+    print("\n")
+
+    print("Computed dominant eigenvalue with Power Method:")
     print(eigenvalues)
+    print("\n")
+
+    print("Computed determinant:")
     print(determinant)
+    print("\n")
 
     M = read_matrix_file(matrix)
     
     method = "Jacobi Eigenvalue Algorithm"
     eigenvectors, eigenvalues, determinant = eigenvector_eigenvalue_solver(M, method, determinant=True)
+    print("Computed matrix of eigenvectors with Jacobi Eigenvalue Algorithm:")
     print_matrix(eigenvectors)
+    print("\n")
+
+    print("Computed diagonal matrix of eigenvalues with Jacobi Eigenvalue Algorithm:")
     print_matrix(eigenvalues)
+    print("\n")
+
+    print("Computed determinant:")
     print(determinant)
+    print("\n")
