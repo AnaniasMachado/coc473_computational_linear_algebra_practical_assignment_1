@@ -7,7 +7,6 @@ Purpose: Verify the results of the implemented algorithms for a set of matrix an
 import math
 import random
 
-from util_matrix_operation import get_transpose
 from util_matrix_operation import matrix_matrix_multiplication
 from util_matrix_operation import copy_matrix, copy_vector, make_matrix, print_matrix
 from solvers import linear_system_solver

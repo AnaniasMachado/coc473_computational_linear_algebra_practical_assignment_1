@@ -19,6 +19,8 @@ def gen_identity_matrix(n):
     return I
 
 def copy_matrix(M):
+    if (len(M) != len(M[0])):
+        raise Exception("Error: Given matrix is not a square matrix.")
     T = []
     for i in range(len(M)):
         row = []
@@ -44,7 +46,7 @@ def print_matrix(M):
 
 def matrix_vector_multiplication(A, B):
     if len(A[0]) != len(B):
-        raise Exception("Error: Matrix-vector multiplication not defined to given matrix and vector.")
+        raise Exception("Error: Matrix-vector multiplication not defined for given matrix and vector.")
     n = len(A)
     p = len(B)
     row = []
@@ -57,7 +59,7 @@ def matrix_vector_multiplication(A, B):
 
 def matrix_matrix_multiplication(A, B):
     if len(A[0]) != len(B):
-        raise Exception("Error: Matrix-matrix multiplication not defined to given matrices.")
+        raise Exception("Error: Matrix-matrix multiplication not defined for given matrices.")
     n = len(A)
     m = len(B)
     p = len(B[0])
@@ -72,31 +74,9 @@ def matrix_matrix_multiplication(A, B):
         C.append(row)
     return C
 
-def matrix_subtraction(A, B):
-    n = len(A[0])
-    for i in range(0, n):
-        for j in range(0, n):
-            A[i][j] = A[i][j] - B[i][j]
-    return A
-
-def is_equal_zero_matrix(M):
-    total = 0
-    tol = math.pow(10, -12)
-    n = len(M[0])
-    for i in range(0, n):
-        for j in range(0, n):
-            total += (M[i][j])**2
-    return total < tol
-
-def get_transpose(M):
-    n = len(M)
-    T = [[0 for i in range(n)] for j in range(n)]
-    for i in range(n):
-        for j in range(n):
-            T[j][i] = M[i][j]
-    return T
-
 def apply_transpose(M):
+    if (len(M) != len(M[0])):
+        raise Exception("Error: Given matrix is not a square matrix.")
     n = len(M)
     for i in range(n):
         for j in range(i+1, n):
@@ -106,6 +86,8 @@ def apply_transpose(M):
     return M
 
 def is_symmetric(M):
+    if (len(M) != len(M[0])):
+        raise Exception("Error: Given matrix is not a square matrix.")
     n = len(M)
     for i in range(0, n):
         for j in range(0, n):
@@ -114,6 +96,8 @@ def is_symmetric(M):
     return True
 
 def is_diagonally_dominant(M):
+    if (len(M) != len(M[0])):
+        raise Exception("Error: Given matrix is not a square matrix.")
     n = len(M)
     for i in range(0, n):
         row_sum = 0

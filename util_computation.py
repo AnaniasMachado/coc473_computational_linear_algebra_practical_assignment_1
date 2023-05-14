@@ -8,14 +8,9 @@ import math
 
 """ Actual Code """
 
-def compute_square_l2_norm_residual(X0, X1):
-    n = len(X0)
-    residual = 0
-    for i in range(n):
-        residual += math.pow((X1[i] - X0[i]), 2)
-    return residual
-
 def compute_vector_residual(X0, X1):
+    if (len(X0) != len(X1)):
+        raise Exception("Error: Operation not defined for vectors of different dimensions.")
     num = 0
     den = 0
     n = len(X0)
@@ -45,6 +40,8 @@ def compute_scalar_residual(S0, S1):
     return residual
 
 def get_greatest_elem_position(M):
+    if (len(M) != len(M[0])):
+        raise Exception("Error: Given matrix is not a square matrix.")
     n = len(M)
     i_max, j_max = 0, 1
     for i in range(0, n):
@@ -56,6 +53,10 @@ def get_greatest_elem_position(M):
 
 def get_jea_cos_and_sin(M, X, i, j):
     # jea stands for jacobi eigenvalue algorithm
+    if (len(M) != len(M[0])):
+        raise Exception("Error: Given matrix M is not a square matrix.")
+    if (len(X) != len(X[0])):
+        raise Exception("Error: Given matrix X is not a square matrix.")
     phi = math.pi / 4
     if M[i][i] != M[j][j]:
         phi = (1/2) * math.atan(2*M[i][j]/(M[i][i] - M[j][j]))
